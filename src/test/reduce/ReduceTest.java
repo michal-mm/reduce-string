@@ -305,4 +305,20 @@ public class ReduceTest {
 
         assertEquals(expected, r.solution(toBeReduced));
     }
+
+    @Test
+    public void testSolution_BBBBC() {
+        String toBeReduced = "BBBBC";
+        String expected = "C";
+
+        assertEquals(expected, r.solution(toBeReduced));
+    }
+
+    @Test
+    public void testSolution_BBBB() {
+        String toBeReduced = "BBBB";
+        String expected = "BBBB";
+
+        assertEquals(expected, r.solution(toBeReduced));
+    }
 }
