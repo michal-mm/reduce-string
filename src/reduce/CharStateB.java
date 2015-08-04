@@ -36,11 +36,7 @@ public class CharStateB extends CharState {
 
     @Override
     public String getBufferAsString(){
-        currentBuffer = new StringBuffer();
-
-        for(int i=0; i<numberOfB; i++) {
-            currentBuffer.append("B");
-        }
+        appendBsToBuffer();
 
         return super.getBufferAsString();
     }
@@ -53,4 +49,12 @@ public class CharStateB extends CharState {
             return false;
         }
     }
+    
+	private void appendBsToBuffer() {
+		currentBuffer = new StringBuffer();
+
+        for(int i=0; i<numberOfB; i++) {
+            currentBuffer.append("B");
+        }
+	}
 }
