@@ -3,8 +3,8 @@ package test.reduce;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import reduce.*;
 
+import reduce.*;
 import static org.junit.Assert.*;
 
 /**
@@ -297,6 +297,14 @@ public class ReduceTest {
 
         assertEquals(expected, r.solution(toBeReduced));
     }
+    
+    @Test
+    public void testSolution_CBA() {
+        String toBeReduced = "CBA";
+        String expected = "CA";
+
+        assertEquals(expected, r.solution(toBeReduced));
+    }
 
     @Test
     public void testSolution_AABCC() {
@@ -320,5 +328,29 @@ public class ReduceTest {
         String expected = "BBBB";
 
         assertEquals(expected, r.solution(toBeReduced));
+    }
+    
+    @Test
+    public void testEqualsA(){
+    	CharState csA = new CharStateA(new StringBuffer());
+    	CharState csB = new CharStateB(new StringBuffer());
+    	
+    	assertEquals (false, csA.equals(csB));
+    }
+    
+    @Test
+    public void testEqualsB(){
+    	CharState csA = new CharStateA(new StringBuffer());
+    	CharState csB = new CharStateB(new StringBuffer());
+    	
+    	assertEquals (false, csB.equals(csA));
+    }
+    
+    @Test
+    public void testEqualsC(){
+    	CharState csC = new CharStateC(new StringBuffer());
+    	CharState csB = new CharStateB(new StringBuffer());
+    	
+    	assertEquals (false, csC.equals(csB));
     }
 }
