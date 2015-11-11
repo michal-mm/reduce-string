@@ -11,19 +11,19 @@ abstract public class CharState {
         currentBuffer = buffer;
     }
 
-    public CharState next (char c) {
+    public CharState next (CharEnum charEnum) {
         CharState nextCharState = null;
 
-        switch (c) {
-            case 'A':
+        switch (charEnum) {
+            case CHAR_A:
                 nextCharState = handleA();
                 break;
 
-            case 'B':
+            case CHAR_B:
                 nextCharState = handleB();
                 break;
 
-            case 'C':
+            case CHAR_C:
                 nextCharState = handleC();
                 break;
         }

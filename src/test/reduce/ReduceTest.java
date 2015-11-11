@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import reduce.*;
+import static reduce.Char2EnumFactory.*;
 import static org.junit.Assert.*;
 
 /**
@@ -47,7 +48,7 @@ public class ReduceTest {
         CharState cs = new CharStateA(new StringBuffer());
         CharState expected = new CharStateA(new StringBuffer());
 
-        assertEquals(expected, cs.next('A'));
+        assertEquals(expected, cs.next(getCharEnum('A')));
     }
 
     @Test
@@ -55,7 +56,7 @@ public class ReduceTest {
         CharState cs = new CharStateA(new StringBuffer());
         CharState expected = new CharStateA(new StringBuffer());
 
-        assertEquals(expected, cs.next('B'));
+        assertEquals(expected, cs.next(getCharEnum('B')));
     }
 
     @Test
@@ -63,14 +64,14 @@ public class ReduceTest {
         CharState cs = new CharStateA(new StringBuffer());
         CharState expected = new CharStateC(new StringBuffer());
 
-        assertEquals(expected, cs.next('C'));
+        assertEquals(expected, cs.next(getCharEnum('C')));
     }
 
     @Test
     public void simpleStateTest_C1() {
         CharState cs = new CharStateC(new StringBuffer());
 
-        assertEquals(cs, cs.next('C'));
+        assertEquals(cs, cs.next(getCharEnum('C')));
     }
 
     @Test
@@ -78,7 +79,7 @@ public class ReduceTest {
         CharState cs = new CharStateC(new StringBuffer());
         CharState expected = new CharStateA(new StringBuffer());
 
-        assertEquals(expected, cs.next('A'));
+        assertEquals(expected, cs.next(getCharEnum('A')));
     }
 
     @Test
@@ -86,7 +87,7 @@ public class ReduceTest {
         CharState cs = new CharStateC(new StringBuffer());
         CharState expected = new CharStateC(new StringBuffer());
 
-        assertEquals(expected, cs.next('B'));
+        assertEquals(expected, cs.next(getCharEnum('B')));
     }
 
     @Test
@@ -94,7 +95,7 @@ public class ReduceTest {
         CharState cs = new CharStateB(new StringBuffer());
         CharState expected = new CharStateA(new StringBuffer());
 
-        assertEquals(expected, cs.next('A'));
+        assertEquals(expected, cs.next(getCharEnum('A')));
     }
 
     @Test
@@ -102,7 +103,7 @@ public class ReduceTest {
         CharState cs = new CharStateB(new StringBuffer());
         CharState expected = new CharStateC(new StringBuffer());
 
-        assertEquals(expected, cs.next('C'));
+        assertEquals(expected, cs.next(getCharEnum('C')));
     }
 
     @Test
@@ -110,7 +111,7 @@ public class ReduceTest {
         CharState cs = new CharStateB(new StringBuffer());
         CharState expected = new CharStateB(new StringBuffer());
 
-        assertEquals(expected, cs.next('B'));
+        assertEquals(expected, cs.next(getCharEnum('B')));
     }
 
     @Test
@@ -119,7 +120,7 @@ public class ReduceTest {
         String expected = "AC";
 
         CharState cs = new CharStateA(begin);
-        CharState nextState = cs.next('C');
+        CharState nextState = cs.next(getCharEnum('C'));
 
         assertEquals(expected, nextState.getBufferAsString());
     }
@@ -130,7 +131,7 @@ public class ReduceTest {
         String expected = "A";
 
         CharState cs = new CharStateA(begin);
-        CharState nextState = cs.next('A');
+        CharState nextState = cs.next(getCharEnum('A'));
 
         assertEquals(expected, nextState.getBufferAsString());
     }
@@ -141,7 +142,7 @@ public class ReduceTest {
         String expected = "A";
 
         CharState cs = new CharStateA(begin);
-        CharState nextState = cs.next('B');
+        CharState nextState = cs.next(getCharEnum('B'));
 
         assertEquals(expected, nextState.getBufferAsString());
     }
@@ -152,7 +153,7 @@ public class ReduceTest {
         String expected = "CA";
 
         CharState cs = new CharStateC(begin);
-        CharState nextState = cs.next('A');
+        CharState nextState = cs.next(getCharEnum('A'));
 
         assertEquals(expected, nextState.getBufferAsString());
     }
@@ -163,7 +164,7 @@ public class ReduceTest {
         String expected = "C";
 
         CharState cs = new CharStateC(begin);
-        CharState nextState = cs.next('C');
+        CharState nextState = cs.next(getCharEnum('C'));
 
         assertEquals(expected, nextState.getBufferAsString());
     }
@@ -174,7 +175,7 @@ public class ReduceTest {
         String expected = "C";
 
         CharState cs = new CharStateC(begin);
-        CharState nextState = cs.next('B');
+        CharState nextState = cs.next(getCharEnum('B'));
 
         assertEquals(expected, nextState.getBufferAsString());
     }
@@ -185,7 +186,7 @@ public class ReduceTest {
         String expected = "A";
 
         CharState cs = new CharStateB(begin);
-        CharState nextState = cs.next('A');
+        CharState nextState = cs.next(getCharEnum('A'));
 
         assertEquals(expected, nextState.getBufferAsString());
     }
@@ -196,7 +197,7 @@ public class ReduceTest {
         String expected = "C";
 
         CharState cs = new CharStateB(begin);
-        CharState nextState = cs.next('C');
+        CharState nextState = cs.next(getCharEnum('C'));
 
         assertEquals(expected, nextState.getBufferAsString());
     }
@@ -207,7 +208,7 @@ public class ReduceTest {
         String expected = "BB";
 
         CharState cs = new CharStateB(begin);
-        CharState nextState = cs.next('B');
+        CharState nextState = cs.next(getCharEnum('B'));
 
         assertEquals(expected, nextState.getBufferAsString());
     }
@@ -220,7 +221,7 @@ public class ReduceTest {
         begin.append("A");
 
         CharState cs = new CharStateA(begin);
-        CharState nextState = cs.next('C');
+        CharState nextState = cs.next(getCharEnum('C'));
 
         assertEquals(expected, nextState.getBufferAsString());
     }
@@ -233,7 +234,7 @@ public class ReduceTest {
         begin.append("C");
 
         CharState cs = new CharStateC(begin);
-        CharState nextState = cs.next('A');
+        CharState nextState = cs.next(getCharEnum('A'));
 
         assertEquals(expected, nextState.getBufferAsString());
     }
@@ -246,7 +247,7 @@ public class ReduceTest {
         begin.append("A");
 
         CharState cs = new CharStateA(begin);
-        CharState nextState = cs.next('A');
+        CharState nextState = cs.next(getCharEnum('A'));
 
         assertEquals(expected, nextState.getBufferAsString());
     }
@@ -259,7 +260,7 @@ public class ReduceTest {
         begin.append("C");
 
         CharState cs = new CharStateC(begin);
-        CharState nextState = cs.next('C');
+        CharState nextState = cs.next(getCharEnum('C'));
 
         assertEquals(expected, nextState.getBufferAsString());
     }
@@ -272,7 +273,7 @@ public class ReduceTest {
         begin.append("A");
 
         CharState cs = new CharStateA(begin);
-        CharState nextState = cs.next('B');
+        CharState nextState = cs.next(getCharEnum('B'));
 
         assertEquals(expected, nextState.getBufferAsString());
     }
@@ -285,7 +286,7 @@ public class ReduceTest {
         begin.append("C");
 
         CharState cs = new CharStateC(begin);
-        CharState nextState = cs.next('B');
+        CharState nextState = cs.next(getCharEnum('B'));
 
         assertEquals(expected, nextState.getBufferAsString());
     }
@@ -352,5 +353,12 @@ public class ReduceTest {
     	CharState csB = new CharStateB(new StringBuffer());
     	
     	assertEquals (false, csC.equals(csB));
+    }
+    
+    @Test
+    public void testChar2EnumFactory() {
+    	CharEnum ce = Char2EnumFactory.getCharEnum('A');
+    	char expected = 'A';
+    	assertEquals(expected, ce.getCharacter());
     }
 }

@@ -18,19 +18,16 @@ public class CharStateB extends CharState {
 
     @Override
     public CharState handleA() {
-
         return new CharStateA(this.currentBuffer.append("A"));
     }
 
     @Override
     public CharState handleB() {
-
         return new CharStateB(this.currentBuffer, numberOfB+1);
     }
 
     @Override
     public CharState handleC() {
-
         return new CharStateC(this.currentBuffer.append("C"));
     }
 
